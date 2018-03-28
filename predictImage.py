@@ -36,7 +36,7 @@ def getPerson(image):
 
 def isPerson(image, username):
     vals = getPerson(image)
-    if vals[0] == username and vals[1] > 90:
+    if vals[0] == username and vals[1] < 102:
         print(vals[0])
         print(str(vals[1]))
         return 1
