@@ -2,15 +2,15 @@ import cv2, sys, numpy, os, time
 haar_file = 'haarcascade_frontalface_default.xml'
 fn_dir = 'database'
 
-#photo_path = sys.argv[1]
-user_name = sys.argv[1]
+photo_path = sys.argv[1]
+#user_name = sys.argv[1]
 
 width = 112
 height = 92
 
 
 def getCropped(grey):
-    face_cascade = cv2.CascadeClassifier(haar_file) 
+    face_cascade = cv2.CascadeClassifier(haar_file)
     #gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(grey, 1.3, 4)
     if len(faces) == 0:
@@ -39,16 +39,18 @@ def getPerson(image):
     retvals = [names[prediction[0]], prediction[1]]
     return retvals
 
-#if not os.path.exists(photo_path):
-#    print("wrong path")
+if not os.path.exists(photo_path):
+    print("wrong path")
 
-#image = cv2.imread(photo_path,0)
-webcam = cv2.VideoCapture(0)
+print(photo_path)
+image = cv2.imread(photo_path,0)
+print(image)
+#webcam = cv2.VideoCapture(0)
 time.sleep(0.1)
-(_, image) = webcam.read()
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+#(_, image) = webcam.read()
+#gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 #print(image)
-vals = getPerson(gray)
+vals = getPerson(image)
 
 '''
 val = 1
@@ -61,10 +63,9 @@ while val:
     if not vals == [0]:
     	break
 '''
-#print(vals[0])
-#print(str(vals[1]))
-
-print(vals)
+print(vals[0])
+print(str(vals[1]))
+'''
 if vals[0] == user_name and vals[1] < 105:
     print("Hi, " + user_name)
     print("score: " + str(vals[1]))
@@ -72,10 +73,4 @@ else:
     print("not " + user_name + "!!!")
     print(vals[0])
     print("score: " + str(vals[1]))
-
-
-
-
-
-
-
+'''
