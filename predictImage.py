@@ -1,3 +1,4 @@
+'''
 import cv2, sys, numpy, os, time
 haar_file = 'haarcascade_frontalface_default.xml'
 fn_dir = 'database'
@@ -58,15 +59,15 @@ def isPerson(imagepath, username):
         print(str(vals[1]))
         return 0
 
-
 '''
+
 import face_recognition
 import cv2
 
 def isPerson(path):
-	img2 = cv2.imread("./1.jpg", 0)
-	cv2.imwrite("./1.jpg", img2)
-	picture_of_me = face_recognition.load_image_file("./1.jpg")
+	img2 = cv2.imread("/home/pi/ComputerVision/facedet/1.jpg", 0)
+	cv2.imwrite("/home/pi/ComputerVision/facedet/1.jpg", img2)
+	picture_of_me = face_recognition.load_image_file("/home/pi/ComputerVision/facedet/1.jpg")
 
 	#face_locations = face_recognition.face_locations(picture_of_me)
 	#print(face_locations)
